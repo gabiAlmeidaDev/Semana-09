@@ -8,8 +8,8 @@ import lombok.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-public class Livro {
+
+public class LivroEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,5 +17,8 @@ public class Livro {
     private String titulo;
     private String autor;
     private Integer anoPublicacao;
+
+    public LivroEntity(String titulo, String autor, Integer anoPublicacao) {
+    }
 
 }

@@ -6,26 +6,19 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
-import java.time.LocalDate;
-
 @Entity
 @Data
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Emprestimos {
+public class BibliotecarioEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long emprestimoId;
-    private Livro livro;
-    private Membros membro;
-    private LocalDate dataEmprestimo;
-    private LocalDate dataDevolucao;
-
-
-
-
+    private Long bibliotecarioId;
+    private String nome;
+    private String email;
+    private String senha;
 
 }

@@ -11,12 +11,18 @@ import lombok.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-public class Visitante {
+
+public class VisitanteEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long visitanteId;
     private String nome;
     private String telefone;
+
+    public VisitanteEntity(Long visitanteId, String nome, String telefone) {
+        this.visitanteId = visitanteId;
+        this.nome = nome;
+        this.telefone = telefone;
+    }
 }

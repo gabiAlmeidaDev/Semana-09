@@ -12,13 +12,12 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Bibliotecario {
+public class MembrosEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long bibliotecarioId;
+    private Long membrosId;
     private String nome;
-    private String email;
-    private String senha;
-
+    private String endereço;
+    private String telefone;
 }
