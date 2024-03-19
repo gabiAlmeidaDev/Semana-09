@@ -19,6 +19,11 @@ public class BibliotecarioService {
     }
 
     public List<BibliotecarioEntity> listatTodos() {
+
         return bibliotecarioRepository.findAll();
+    }
+
+    public void deletarBibliotecario(Long id) {
+        bibliotecarioRepository.deleteById(id);
     }
 }

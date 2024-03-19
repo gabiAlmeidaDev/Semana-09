@@ -19,6 +19,11 @@ public class VisitanteService {
     }
 
     public List<VisitanteEntity> listarTodos() {
+
         return visitanteRepository.findAll();
+    }
+
+    public void deletarVisitante(Long id) {
+        visitanteRepository.deleteById(id);
     }
 }

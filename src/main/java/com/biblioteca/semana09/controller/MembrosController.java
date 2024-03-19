@@ -4,6 +4,7 @@ import com.biblioteca.semana09.entites.MembrosEntity;
 import com.biblioteca.semana09.service.MembrosService;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +31,13 @@ public class MembrosController {
 
     @GetMapping
     public List<MembrosEntity> listarTodosMembros() {
+
         return membrosService.listarTodos();
+    }
+
+    @DeleteMapping("/membros/{id}")
+    public ResponseEntity<?> deletarMembro(@PathVariable Long id) {
+        membrosService.deletarMembro(id);
+        return ResponseEntity.ok().build();
     }
 }

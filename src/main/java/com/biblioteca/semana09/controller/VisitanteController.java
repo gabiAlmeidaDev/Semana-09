@@ -4,6 +4,7 @@ import com.biblioteca.semana09.entites.VisitanteEntity;
 import com.biblioteca.semana09.service.VisitanteService;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +31,13 @@ public class VisitanteController {
 
     @GetMapping
     public List<VisitanteEntity> listarTodosVisitantes() {
+
         return visitanteService.listarTodos();
+    }
+
+    @DeleteMapping("/visitantes/{id}")
+    public ResponseEntity<?> deletarVisitante(@PathVariable Long id) {
+        visitanteService.deletarVisitante(id);
+        return ResponseEntity.ok().build();
     }
 }

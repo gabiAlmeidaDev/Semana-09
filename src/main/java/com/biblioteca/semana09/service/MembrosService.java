@@ -21,4 +21,8 @@ public class MembrosService {
     public List<MembrosEntity> listarTodos() {
         return membrosRepository.findAll();
     }
+
+    public void deletarMembro(Long id) {
+        membrosRepository.deleteById(id);
+    }
 }

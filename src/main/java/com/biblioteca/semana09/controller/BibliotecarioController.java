@@ -5,6 +5,7 @@ import com.biblioteca.semana09.entites.BibliotecarioEntity;
 import com.biblioteca.semana09.service.BibliotecarioService;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,6 +32,13 @@ public class BibliotecarioController {
 
     @GetMapping
     public List<BibliotecarioEntity> listarTodosBibliotecarios() {
+
         return bibliotecarioService.listatTodos();
+    }
+
+    @DeleteMapping("/bibliotecarios/{id}")
+    public ResponseEntity<?> deletarBibliotecario(@PathVariable Long id) {
+        bibliotecarioService.deletarBibliotecario(id);
+        return ResponseEntity.ok().build();
     }
 }
