@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 @Entity
 @Data
@@ -17,6 +18,7 @@ public class VisitanteEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long visitanteId;
+    @NotNull
     private String nome;
     private String telefone;
 

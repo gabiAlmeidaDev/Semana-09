@@ -1,7 +1,6 @@
 package com.biblioteca.semana09.controller;
 
 import com.biblioteca.semana09.entites.LivroEntity;
-import com.biblioteca.semana09.entites.MembrosEntity;
 import com.biblioteca.semana09.service.LivroService;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;

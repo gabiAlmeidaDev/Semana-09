@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 import java.time.LocalDate;
 
@@ -14,14 +15,18 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class EmprestimosEntity {
+public class EmprestimoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long emprestimoId;
+    @NotNull
     private LivroEntity livro;
+    @NotNull
     private MembrosEntity membro;
+    @NotNull
     private LocalDate dataEmprestimo;
+    @NotNull
     private LocalDate dataDevolucao;
 
 
