@@ -2,12 +2,15 @@ package com.biblioteca.semana09.controller;
 
 
 import com.biblioteca.semana09.entites.BibliotecarioEntity;
+import com.biblioteca.semana09.service.BibliotecarioService;
 import lombok.Getter;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
+@RequestMapping("/bibliotecario")
 public class BibliotecarioController {
 
     @Getter
@@ -17,11 +20,17 @@ public class BibliotecarioController {
         private String senha;
     }
 
-
-    @PostMapping("/bibliotecario")
+    @PostMapping("/bibliotecarios")
     public BibliotecarioEntity adicionarBibliotecario(@RequestBody BibliotecarioController.BibliotecarioRequest bibliotecarioRequest) {
-        BibliotecarioEntity membro = new BibliotecarioEntity();
 
-        return membro;
+        return new BibliotecarioEntity();
+    }
+
+    @Autowired
+    private BibliotecarioService bibliotecarioService;
+
+    @GetMapping
+    public List<BibliotecarioEntity> listarTodosBibliotecarios() {
+        return bibliotecarioService.listatTodos();
     }
 }

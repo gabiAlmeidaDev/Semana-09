@@ -3,10 +3,13 @@ package com.biblioteca.semana09.controller;
 import com.biblioteca.semana09.entites.LivroEntity;
 import com.biblioteca.semana09.service.LivroService;
 import lombok.Getter;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
+@RestController
+@RequestMapping("/livros")
 public class LivroController {
 
     @Getter
@@ -27,6 +30,12 @@ public class LivroController {
         return livroService.salvarLivro(livro);
     }
 
+    @Autowired
+    private LivroService livroService;
 
+    @GetMapping
+    public List<LivroEntity> listarTodosLivros() {
+        return livroService.listarTodosLivros();
+    }
 
 }

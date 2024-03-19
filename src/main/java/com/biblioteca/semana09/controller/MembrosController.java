@@ -1,12 +1,15 @@
 package com.biblioteca.semana09.controller;
 
 import com.biblioteca.semana09.entites.MembrosEntity;
+import com.biblioteca.semana09.service.MembrosService;
 import lombok.Getter;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
+@RequestMapping("/membros")
 public class MembrosController {
 
     @Getter
@@ -18,8 +21,15 @@ public class MembrosController {
 
     @PostMapping("/membros")
     public MembrosEntity adicionarMembro(@RequestBody MembrosController.MembrosRequest membrosRequest) {
-        MembrosEntity membro = new MembrosEntity();
 
-        return membro;
+        return new MembrosEntity();
+    }
+
+    @Autowired
+    private MembrosService membrosService;
+
+    @GetMapping
+    public List<MembrosEntity> listarTodosMembros() {
+        return membrosService.listarTodos();
     }
 }

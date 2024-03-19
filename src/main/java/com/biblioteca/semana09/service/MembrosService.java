@@ -5,6 +5,8 @@ import com.biblioteca.semana09.repository.MembrosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MembrosService {
 
@@ -14,5 +16,9 @@ public class MembrosService {
     public MembrosEntity salvarMembro(MembrosEntity membro) {
 
         return membrosRepository.save(membro);
+    }
+
+    public List<MembrosEntity> listarTodos() {
+        return membrosRepository.findAll();
     }
 }

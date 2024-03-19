@@ -1,12 +1,15 @@
 package com.biblioteca.semana09.controller;
 
 import com.biblioteca.semana09.entites.VisitanteEntity;
+import com.biblioteca.semana09.service.VisitanteService;
 import lombok.Getter;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
+@RequestMapping("/visitantes")
 public class VisitanteController {
 
     @Getter
@@ -17,9 +20,16 @@ public class VisitanteController {
 
     @PostMapping("/visitantes")
     public VisitanteEntity adicionarVisitante(@RequestBody VisitanteRequest visitanteRequest) {
-        VisitanteEntity visitante = new VisitanteEntity(
-        );
 
-        return visitante;
+        return new VisitanteEntity(
+        );
+    }
+
+    @Autowired
+    public VisitanteService visitanteService;
+
+    @GetMapping
+    public List<VisitanteEntity> listarTodosVisitantes() {
+        return visitanteService.listarTodos();
     }
 }

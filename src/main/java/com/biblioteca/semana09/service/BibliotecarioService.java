@@ -5,6 +5,8 @@ import com.biblioteca.semana09.repository.BibliotecarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BibliotecarioService {
 
@@ -14,5 +16,9 @@ public class BibliotecarioService {
     public BibliotecarioEntity salvarBibliotecario(BibliotecarioEntity bibliotecario) {
 
         return bibliotecarioRepository.save(bibliotecario);
+    }
+
+    public List<BibliotecarioEntity> listatTodos() {
+        return bibliotecarioRepository.findAll();
     }
 }
