@@ -41,4 +41,15 @@ public class BibliotecarioController {
         bibliotecarioService.deletarBibliotecario(id);
         return ResponseEntity.ok().build();
     }
+
+    @PutMapping("/bibliotecarios/{id}")
+    public ResponseEntity<BibliotecarioEntity> atualizarBibliotecario(@PathVariable Long id,
+                                                                      @RequestBody BibliotecarioRequest bibliotecarioRequest) {
+        bibliotecarioService.updateBibliotecario(bibliotecarioRequest.getNome(),
+                                                 bibliotecarioRequest.getEmail(),
+                                                 bibliotecarioRequest.getSenha(),
+                                                 id);
+        return ResponseEntity.ok().build();
+    }
+
 }

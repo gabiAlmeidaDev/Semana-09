@@ -4,6 +4,7 @@ import com.biblioteca.semana09.entites.BibliotecarioEntity;
 import com.biblioteca.semana09.repository.BibliotecarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -24,6 +25,15 @@ public class BibliotecarioService {
     }
 
     public void deletarBibliotecario(Long id) {
+
         bibliotecarioRepository.deleteById(id);
+    }
+
+    @Transactional
+    public void updateBibliotecario(String nome,
+                                    String email,
+                                    String senha,
+                                    Long id) {
+        bibliotecarioRepository.updateBibliotecario(nome, email, senha, id);
     }
 }

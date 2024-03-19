@@ -2,6 +2,7 @@ package com.biblioteca.semana09.controller;
 
 import com.biblioteca.semana09.entites.MembrosEntity;
 import com.biblioteca.semana09.service.MembrosService;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +15,15 @@ import java.util.List;
 public class MembrosController {
 
     @Getter
+    @AllArgsConstructor
     public class MembrosRequest {
         private String nome;
         private String endereço;
         private String telefone;
+
+        public String getEndereco() {
+            return null;
+        }
     }
 
     @PostMapping("/membros")
@@ -38,6 +44,16 @@ public class MembrosController {
     @DeleteMapping("/membros/{id}")
     public ResponseEntity<?> deletarMembro(@PathVariable Long id) {
         membrosService.deletarMembro(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/membros/{id}")
+    public ResponseEntity<MembrosEntity> atualizarMembro(@PathVariable Long id,
+                                                         @RequestBody MembrosRequest membroRequest) {
+        membrosService.updateMembro(membroRequest.getNome(),
+                                    membroRequest.getEndereco(),
+                                    membroRequest.getTelefone(),
+                                    id);
         return ResponseEntity.ok().build();
     }
 }

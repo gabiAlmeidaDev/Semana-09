@@ -40,4 +40,14 @@ public class VisitanteController {
         visitanteService.deletarVisitante(id);
         return ResponseEntity.ok().build();
     }
+
+    @PutMapping("/visitantes/{id}")
+    public ResponseEntity<VisitanteEntity> atualizarVisitante(@PathVariable Long id,
+                                                              @RequestBody VisitanteRequest visitanteRequest) {
+        visitanteService.updateVisitante(visitanteRequest.getNome(),
+                                         visitanteRequest.getTelefone(),
+                                         id);
+        return ResponseEntity.ok().build();
+    }
+
 }

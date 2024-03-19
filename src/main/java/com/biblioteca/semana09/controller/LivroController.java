@@ -46,4 +46,14 @@ public class LivroController {
         return ResponseEntity.ok().build();
     }
 
+    @PutMapping("/livros/{id}")
+    public ResponseEntity<LivroEntity> atualizarLivro(@PathVariable Long id,
+                                                      @RequestBody LivroRequest livroRequest) {
+        livroService.updateLivro(livroRequest.getTitulo(),
+                                 livroRequest.getAutor(),
+                                 livroRequest.getAnoPublicacao(), id);
+        return ResponseEntity.ok().build();
+    }
+
+
 }
